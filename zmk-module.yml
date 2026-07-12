@@ -1,5 +1,1 @@
 name: chopper-zmk-config
-zephyr-module:
-  build:
-    settings:
-      shield_root: boards
