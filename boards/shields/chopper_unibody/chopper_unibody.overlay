@@ -106,11 +106,11 @@
 // =========================================================
 &i2c0 {
     status = "okay";
-    compatible = "nordic,nrf-twim"; // Using specific master interface driver
+    compatible = "nordic,nrf-twim";
     pinctrl-0 = <&i2c0_default>;
     pinctrl-1 = <&i2c0_sleep>;
     pinctrl-names = "default", "sleep";
-    clock-frequency = <I2C_BITRATE_FAST>;
+    clock-frequency = <400000>; // Changed from macro to standard literal 400kHz integer
 
     oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
