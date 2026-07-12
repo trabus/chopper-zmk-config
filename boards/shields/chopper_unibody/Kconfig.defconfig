@@ -1,5 +1,8 @@
 if SHIELD_CHOPPER_UNIBODY
 
+config ZMK_KEYBOARD_NAME
+    default "Chopper Unibody"
+    
 config ZMK_DISPLAY
     default y
 
