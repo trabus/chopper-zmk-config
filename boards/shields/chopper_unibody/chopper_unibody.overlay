@@ -39,7 +39,7 @@
     };
 
     // =========================================================
-    // 2. MATRIX TRANSFORM MAPPING (Maps Electrical Grid to Physical Layout)
+    // 2. MATRIX TRANSFORM MAPPING (Corrected to map all 52 layout keys)
     // =========================================================
     default_transform: matrix_transform {
         compatible = "zmk,matrix-transform";
@@ -56,10 +56,11 @@
     // Physical Row 3 (16 keys - Bottom Alpha + Left/Right Encoder clicks at outer edges)
     RC(3,6) RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(2,6) RC(6,0) RC(6,1) RC(6,2) RC(6,3) RC(6,4) RC(6,5) RC(6,6) RC(7,0)
     
-    // Physical Row 4 (8 keys - Clean Sub-60% Modifier Thumb Cluster)
-                    RC(3,3) RC(3,4) RC(3,5)          RC(7,1) RC(7,2) RC(7,3)
+    // Physical Row 4 (8 keys - Corrected Clean Sub-60% Modifier Thumb Cluster)
+            RC(3,3) RC(3,4) RC(3,5) RC(3,0)         RC(7,4) RC(7,1) RC(7,2) RC(7,3)
         >;
     };
+
 
     // =========================================================
     // 3. PHYSICAL ENCODERS

@@ -12,17 +12,17 @@
 
         default_layer {
             // =========================================================================
-            // DEFAULT LAYOUT LAYER (52 Alpha/Nav Keys + 2 Encoder Buttons = 54 Bindings)
+            // DEFAULT LAYOUT LAYER (50 Alpha/Nav Keys + 2 Encoder Buttons = 52 Bindings)
             // =========================================================================
             bindings = <
     // Physical Row 1 (14 keys)
     &kp ESC   &kp Q    &kp W    &kp E    &kp R    &kp T    &kp Y    &kp U    &kp I    &kp O    &kp P    &kp LBKT  &kp RBKT  &kp BSPC
-    // Physical Row 2 (14 keys) - Changed from broken &kp NUHS to the standard &kp NON_US_HASH to resolve compiler error
+    // Physical Row 2 (14 keys)
     &kp TAB   &kp A    &kp S    &kp D    &kp F    &kp G    &kp H    &kp J    &kp K    &kp L    &kp SEMI &kp SQT   &kp NON_US_HASH &kp RET
     // Physical Row 3 (16 keys - framed by left Mute and right Arrow)
     &kp MUTE  &kp LSHFT &kp Z   &kp X    &kp C    &kp V    &kp B    &kp N    &kp M    &kp COMMA &kp DOT &kp FSLH  &kp RSHFT &kp UP    &kp DEL   &kp RIGHT
     // Physical Row 4 (8 keys - Standalone Clean Thumb Modifiers)
-                       &kp LCTRL &kp LCMD &mo LOWER         &kp SPACE &kp ENTER &mo LOWER &kp RCMD  &kp LALT
+                       &kp LCTRL &kp LCMD &mo LOWER &kp SPACE &kp ENTER &mo LOWER &kp RCMD &kp LALT
             >;
 
             // Encoder Left: Volume Control | Encoder Right: Page Nav Scrolling
@@ -41,7 +41,7 @@
     // Row 3 (16 keys)
     &none     &none    &none    &none    &none    &none    &none    &none    &none &none     &none     &none     &none     &none     &none     &none
     // Row 4 (8 keys)
-                                 &none    &none    &trans                     &trans    &none     &none    &none     &none
+                                 &none    &none    &trans   &trans   &none    &none     &none    &none
             >;
 
             // Keep tracking navigation controls across layers
