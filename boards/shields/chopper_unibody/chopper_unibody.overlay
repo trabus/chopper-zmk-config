@@ -9,10 +9,10 @@
     // =========================================================
     // 1. HARDWARE MATRIX SCANNER (nice!nano Columns + Expander Rows)
     // =========================================================
-    kscan0: kscan {
+    kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-matrix";
-        label = "KSCAN";
         diode-direction = "col2row";
+        wakeup-source;
 
         // 7 Spliced central column nodes routed straight to nice!nano side pins
         col-gpios

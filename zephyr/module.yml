@@ -1,1 +1,5 @@
 name: zmk-keyboard-chopper_unibody
+
+build:
+  settings:
+    board_root: .

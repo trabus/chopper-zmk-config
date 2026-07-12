@@ -3,5 +3,7 @@ id: chopper_unibody
 name: Chopper Unibody
 type: shield
 url: https://github.com/trabus/chopper-zmk-config
-targets:
+requires: 
   - nice_nano_v2
+features: 
+  - keys
