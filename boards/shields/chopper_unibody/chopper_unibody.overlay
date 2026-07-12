@@ -1,5 +1,5 @@
 #include <dt-bindings/zmk/matrix_transform.h>
-#include <nordic/nrf-pinctrl.h> // Added to resolve the NRF_PSEL compiler error
+#include <nordic/nrf-pinctrl.h>
 
 / {
     chosen {
@@ -81,7 +81,6 @@
         steps = <80>;
     };
 
-    // Added to resolve the missing keymap-sensors node error
     sensors: sensors {
         compatible = "zmk,keymap-sensors";
         sensors = <&encoder_1 &encoder_2>;
@@ -114,7 +113,6 @@
 // =========================================================
 &i2c0 {
     status = "okay";
-    compatible = "nordic,nrf-twim";
     pinctrl-0 = <&i2c0_default>;
     pinctrl-1 = <&i2c0_sleep>;
     pinctrl-names = "default", "sleep";
