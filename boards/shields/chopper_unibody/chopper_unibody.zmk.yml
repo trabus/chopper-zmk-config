@@ -1,7 +1,7 @@
-file_format: 1
+file_format: "1"
 id: chopper_unibody
 name: Chopper Unibody
 type: shield
-url: https://github.com
+url: https://github.com/trabus/chopper-zmk-config
 targets:
   - nice_nano_v2
