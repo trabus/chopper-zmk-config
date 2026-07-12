@@ -1,0 +1,7 @@
+file_format: 1
+id: chopper_unibody
+name: Chopper Unibody
+type: shield
+url: https://github.com
+targets:
+  - nice_nano_v2
