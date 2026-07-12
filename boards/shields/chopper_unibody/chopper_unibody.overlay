@@ -11,8 +11,8 @@
     // =========================================================
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-matrix";
+        label = "KSCAN";
         diode-direction = "col2row";
-        wakeup-source;
 
         // 7 Spliced central column nodes routed straight to nice!nano side pins
         col-gpios
@@ -25,16 +25,16 @@
             , <&gpio1 13 GPIO_ACTIVE_HIGH> // C6 (D15)
             ;
 
-        // 8 Horizontal row lines routed straight to PCA9555 Port 0
+        // Corrected layout syntax pointing directly to the Expander instances
         row-gpios
-            = <&pca9555 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 0 -> Expander P0.0
-            , <&pca9555 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 1 -> Expander P0.1
-            , <&pca9555 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 2 -> Expander P0.2
-            , <&pca9555 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 3 -> Expander P0.3
-            , <&pca9555 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 4 -> Expander P0.4
-            , <&pca9555 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 5 -> Expander P0.5
-            , <&pca9555 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 6 -> Expander P0.6
-            , <&pca9555 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // Row 7 -> Expander P0.7
+            = <&pca9555 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&pca9555 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&pca9555 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&pca9555 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&pca9555 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&pca9555 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&pca9555 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&pca9555 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
             ;
     };
 
@@ -113,6 +113,6 @@
         label = "PCA9555";
         gpio-controller;
         #gpio-cells = <2>;
-        interrupt-gpios = <&gpio0 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // D1 Pin (Provides deep sleep interrupt)
+        interrupt-gpios = <&gpio0 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // D1 Pin
     };
 };
