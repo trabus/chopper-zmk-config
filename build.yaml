@@ -1,5 +1,9 @@
 name: Build
 
+include:
+  - board: nice_nano_v2
+    shield: chopper_unibody
+
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
