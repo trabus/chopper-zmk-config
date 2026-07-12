@@ -105,7 +105,8 @@
         prechargep = <0x22>;
         segment-offset = <0>;
         page-offset = <0>;
-        display-offset = <0>; // Added final required property to satisfy newer driver parameters
+        display-offset = <0>;
+        multiplex-ratio = <31>; // Added required display parameter (height - 1)
     };
 
     pca9555: pca9555@20 {
