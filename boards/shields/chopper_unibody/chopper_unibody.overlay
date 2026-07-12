@@ -25,16 +25,16 @@
             , <&gpio1 13 GPIO_ACTIVE_HIGH> // C6 (D15)
             ;
 
-        // Pointing directly to the newly declared sub-node port on the expander
+        // Cleaned up syntax pointing directly to the root expander instance node
         row-gpios
-            = <&pca9555_pins 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
-            , <&pca9555_pins 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            = <&pca9555 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&pca9555 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
             , <&pca9555 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
-            , <&pca9555_pins 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
-            , <&pca9555_pins 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
-            , <&pca9555_pins 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
-            , <&pca9555_pins 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
-            , <&pca9555_pins 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&pca9555 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&pca9555 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&pca9555 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&pca9555 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
+            , <&pca9555 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
             ;
     };
 
@@ -114,12 +114,5 @@
         gpio-controller;
         #gpio-cells = <2>;
         interrupt-gpios = <&gpio0 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // D1 Pin
-
-        // Added the required nested GPIO port definitions to satisfy the Zephyr matrix binding
-        pca9555_pins: gpio_pins {
-            compatible = "nxp,pca9555-gpio-port";
-            gpio-controller;
-            #gpio-cells = <2>;
-        };
     };
 };
