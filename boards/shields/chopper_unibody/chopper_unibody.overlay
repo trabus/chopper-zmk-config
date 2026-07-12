@@ -62,7 +62,7 @@
     };
 
     // =========================================================
-    // 3. PHYSICAL ENCODERS (Cleaned up redundant labels/sensors wrapper)
+    // 3. PHYSICAL ENCODERS
     // =========================================================
     encoder_1: encoder_1 {
         compatible = "alps,ec11";
@@ -82,14 +82,35 @@
 };
 
 // =========================================================
-// 4. SHARED I2C BUS (OLED Display + PCA9555 Expander)
-// Moved completely outside of the root "/" node to prevent nesting syntax errors
+// 4. PIN CONTROL DEFINITIONS (Correct modern Zephyr I2C Routing)
+// =========================================================
+&pinctrl {
+    i2c0_default: i2c0_default {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 0, 17)>, // D2 / P0.17
+                    <NRF_PSEL(TWIM_SCL, 0, 20)>; // D3 / P0.20
+        };
+    };
+
+    i2c0_sleep: i2c0_sleep {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 0, 17)>, 
+                    <NRF_PSEL(TWIM_SCL, 0, 20)>;
+            low-power-enable;
+        };
+    };
+};
+
+// =========================================================
+// 5. SHARED I2C BUS (OLED Display + PCA9555 Expander)
 // =========================================================
 &i2c0 {
     status = "okay";
-    compatible = "nordic,nrf-twi";
-    sda-pin = <17>; // D2
-    scl-pin = <20>; // D3
+    compatible = "nordic,nrf-twim"; // Using specific master interface driver
+    pinctrl-0 = <&i2c0_default>;
+    pinctrl-1 = <&i2c0_sleep>;
+    pinctrl-names = "default", "sleep";
+    clock-frequency = <I2C_BITRATE_FAST>;
 
     oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
