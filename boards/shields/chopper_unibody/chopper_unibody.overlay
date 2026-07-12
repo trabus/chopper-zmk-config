@@ -4,6 +4,7 @@
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix-transform = &default_transform;
+        zephyr,display = &oled; // Added path pointer to satisfy ZMK display requirements
     };
 
     // =========================================================
@@ -25,7 +26,7 @@
             , <&gpio1 13 GPIO_ACTIVE_HIGH> // C6 (D15)
             ;
 
-        // Matrix scan row map lines targeting the corrected expander node instances
+        // Corrected layout syntax pointing directly to the Expander instances
         row-gpios
             = <&pca9555 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
             , <&pca9555 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
@@ -109,12 +110,12 @@
     };
 
     pca9555: pca9555@20 {
-        compatible = "nxp,pca95xx"; // Corrected driver to match Zephyr base binding specifications
+        compatible = "nxp,pca95xx"; 
         reg = <0x20>; 
         label = "PCA9555";
         gpio-controller;
         #gpio-cells = <2>;
-        ngpios = <16>; // Explicitly defines total active pin size count parameters
+        ngpios = <16>; 
         interrupt-gpios = <&gpio0 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // D1 Pin
     };
 };
