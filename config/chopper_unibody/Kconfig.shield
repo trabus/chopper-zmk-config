@@ -1,2 +1,0 @@
-config SHIELD_CHOPPER_UNIBODY
-    def_bool $(shields_list_contains,chopper_unibody)
