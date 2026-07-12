@@ -1,3 +1,6 @@
 name: chopper-zmk-config
-shields:
-  - boards/shields/chopper_unibody
+# This section tells the ZMK builder that this module provides boards and shields
+zephyr-module:
+  build:
+    settings:
+      board_root: .
