@@ -4,9 +4,11 @@ config ZMK_KEYBOARD_NAME
     default "Chopper Unibody"
 
 config ZMK_DISPLAY
+    bool
     default y
 
 config EC11
+    bool
     default y
 
 endif
