@@ -1,0 +1,3 @@
+name: chopper-zmk-config
+shields:
+  - config/boards/shields/chopper_unibody
