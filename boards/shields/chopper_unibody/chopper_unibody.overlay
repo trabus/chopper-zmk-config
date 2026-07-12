@@ -9,7 +9,7 @@
     // =========================================================
     // 1. HARDWARE MATRIX SCANNER (nice!nano Columns + Expander Rows)
     // =========================================================
-    kscan0: kscan0 {
+    kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
         diode-direction = "col2row";
@@ -62,7 +62,7 @@
     };
 
     // =========================================================
-    // 3. PHYSICAL ENCODERS
+    // 3. PHYSICAL ENCODERS (Cleaned up redundant labels/sensors wrapper)
     // =========================================================
     encoder_1: encoder_1 {
         compatible = "alps,ec11";
@@ -79,16 +79,11 @@
         b-gpios = <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // D19
         steps = <80>;
     };
-
-    sensors {
-        compatible = "zmk,keymap-sensors";
-        sensors = <&encoder_1 &encoder_2>;
-        triggers-per-rotation = <20>;
-    };
 };
 
 // =========================================================
 // 4. SHARED I2C BUS (OLED Display + PCA9555 Expander)
+// Moved completely outside of the root "/" node to prevent nesting syntax errors
 // =========================================================
 &i2c0 {
     status = "okay";
