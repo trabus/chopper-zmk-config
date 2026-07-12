@@ -25,7 +25,7 @@
             , <&gpio1 13 GPIO_ACTIVE_HIGH> // C6 (D15)
             ;
 
-        // Cleaned up syntax pointing directly to the root expander instance node
+        // Matrix scan row map lines targeting the corrected expander node instances
         row-gpios
             = <&pca9555 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
             , <&pca9555 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
@@ -109,10 +109,12 @@
     };
 
     pca9555: pca9555@20 {
-        compatible = "nxp,pca9555";
+        compatible = "nxp,pca95xx"; // Corrected driver to match Zephyr base binding specifications
         reg = <0x20>; 
+        label = "PCA9555";
         gpio-controller;
         #gpio-cells = <2>;
+        ngpios = <16>; // Explicitly defines total active pin size count parameters
         interrupt-gpios = <&gpio0 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // D1 Pin
     };
 };
