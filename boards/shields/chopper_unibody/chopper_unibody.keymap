@@ -15,18 +15,18 @@
             // DEFAULT LAYOUT LAYER (52 Alpha/Nav Keys + 2 Encoder Buttons = 54 Bindings)
             // =========================================================================
             bindings = <
-    // Physical Row 1 (14 keys)
-    &kp ESC   &kp Q    &kp W    &kp E    &kp R    &kp T    &kp Y    &kp U    &kp I    &kp O    &kp P    &kp LBKT  &kp RBKT  &kp BSPC
-    // Physical Row 2 (14 keys)
-    &kp TAB   &kp A    &kp S    &kp D    &kp F    &kp G    &kp H    &kp J    &kp K    &kp L    &kp SEMI &kp SQT   &kp NUHS  &kp RET
-    // Physical Row 3 (16 keys - framed by left Mute and right Arrow)
-    &kp MUTE  &kp LSHFT &kp Z   &kp X    &kp C    &kp V    &kp B    &kp N    &kp M    &kp COMMA &kp DOT &kp FSLH  &kp RSHFT &kp UP    &kp DEL   &kp RIGHT
-    // Physical Row 4 (8 keys - Standalone Clean Thumb Modifiers)
-                       &kp LCTRL &kp LCMD &mo LOWER         &kp SPACE &kp ENTER &mo LOWER &kp RCMD  &kp LALT
+                // Physical Row 1 (14 keys)
+                &kp ESC  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &kp LBKT  &kp RBKT  &kp BSPC
+                // Physical Row 2 (14 keys)
+                &kp TAB  &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &kp L  &kp SEMI  &kp SQT  &kp NUHS  &kp RET
+                // Physical Row 3 (16 keys - framed by left Mute and right Arrow)
+                &kp MUTE  &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT  &kp UP  &kp DEL  &kp RIGHT
+                // Physical Row 4 (8 keys - Standalone Clean Thumb Modifiers)
+                &kp LCTRL  &kp LCMD  &mo LOWER  &kp SPACE  &kp ENTER  &mo LOWER  &kp RCMD  &kp LALT
             >;
 
             // Encoder Left: Volume Control | Encoder Right: Page Nav Scrolling
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>, <&inc_dec_kp PG_UP PG_DN>;
         };
 
         lower_layer {
@@ -34,18 +34,18 @@
             // LOWER UTILITIES LAYER (Activated by holding down either Layer thumb key)
             // =========================================================================
             bindings = <
-    // Number row generation layer (14 keys)
-    &kp GRAVE &kp N1   &kp N2   &kp N3   &kp N4   &kp N5   &kp N6   &kp N7   &kp N8   &kp N9   &kp N0   &kp MINUS &kp EQUAL &none
-    // Wireless Connectivity & Utility Tools (14 keys)
-    &none     &none    &none    &none    &none    &none    &none    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &none &none
-    // Row 3 (16 keys)
-    &none     &none    &none    &none    &none    &none    &none    &none    &none &none     &none     &none     &none     &none     &none     &none
-    // Row 4 (8 keys)
-                                 &none    &none    &trans                     &trans    &none     &none    &none     &none
+                // Number row generation layer (14 keys)
+                &kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp MINUS  &kp EQUAL  &none
+                // Wireless Connectivity & Utility Tools (14 keys)
+                &none  &none  &none  &none  &none  &none  &none  &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &none  &none
+                // Row 3 (16 keys)
+                &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+                // Row 4 (8 keys)
+                &none  &none  &trans  &trans  &none  &none  &none  &none
             >;
 
             // Keep tracking navigation controls across layers
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>, <&inc_dec_kp PG_UP PG_DN>;
         };
     };
 };
