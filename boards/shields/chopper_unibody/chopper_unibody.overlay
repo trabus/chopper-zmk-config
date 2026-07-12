@@ -1,4 +1,5 @@
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <nordic/nrf-pinctrl.h> // Added to resolve the NRF_PSEL compiler error
 
 / {
     chosen {
@@ -79,6 +80,13 @@
         b-gpios = <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // D19
         steps = <80>;
     };
+
+    // Added to resolve the missing keymap-sensors node error
+    sensors: sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&encoder_1 &encoder_2>;
+        triggers-per-rotation = <20>;
+    };
 };
 
 // =========================================================
@@ -110,7 +118,7 @@
     pinctrl-0 = <&i2c0_default>;
     pinctrl-1 = <&i2c0_sleep>;
     pinctrl-names = "default", "sleep";
-    clock-frequency = <400000>; // Changed from macro to standard literal 400kHz integer
+    clock-frequency = <400000>; 
 
     oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
