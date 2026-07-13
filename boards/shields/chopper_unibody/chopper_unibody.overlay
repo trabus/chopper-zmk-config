@@ -3,8 +3,8 @@
 / {
     chosen {
         zmk,kscan = &kscan0;
-        zmk,matrix-transform = &default_transform; // Re-linked native transform path
         zephyr,display = &oled;
+        // Wiped the zmk,matrix-transform line completely to pass ZMK Studio's build assert checks
     };
 
     // =========================================================
@@ -39,8 +39,19 @@
     };
 
     // =========================================================
-    // 2. MATRIX TRANSFORM MAPPING (Your Exact 12-14-14-10 Layout = 50 Keys)
+    // 2. OFFICIAL PHYSICAL LAYOUT REGISTRATION (Clears the Static Assert Build Error)
     // =========================================================
+    layouts {
+        compatible = "zmk,physical-layouts";
+
+        default_layout: default_layout {
+            compatible = "zmk,physical-layout";
+            display-name = "Chopper Unibody";
+            transform = <&default_transform>;
+            kscan = <&kscan0>;
+        };
+    };
+
     default_transform: matrix_transform {
         compatible = "zmk,matrix-transform";
         columns = <7>; 
@@ -56,7 +67,7 @@
     // Physical Row 3 (14 keys)
     RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(2,6) RC(6,0) RC(6,1) RC(6,2) RC(6,3) RC(6,4) RC(6,5) RC(6,6)
     
-    // Physical Row 4 (10 thumb/encoder keys - Encoders centered in the cluster)
+    // Physical Row 4 (10 thumb/encoder keys)
     RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,0)         RC(7,4) RC(7,0) RC(7,1) RC(7,2) RC(7,3)
         >;
     };
