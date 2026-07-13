@@ -11,8 +11,4 @@ config EC11
     bool
     default y
 
-config CONFIG_ZMK_STUDIO_LOCKING
-    bool
-    default n
-    
 endif
