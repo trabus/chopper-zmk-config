@@ -1,5 +1,4 @@
 #include <dt-bindings/zmk/matrix_transform.h>
-#include <dt-bindings/zmk/physical_layouts.h> // Added missing header to resolve the key_physical error
 
 / {
     chosen {
@@ -39,7 +38,7 @@
     };
 
     // =========================================================
-    // 2. MODERN PHYSICAL LAYOUT DEFINITION (Required for ZMK Studio)
+    // 2. STABLE PHYSICAL LAYOUT DEFINITION (Required for ZMK Studio v0.3)
     // =========================================================
     layouts {
         compatible = "zmk,physical-layouts";
@@ -50,13 +49,18 @@
             transform = <&default_transform>;
             kscan = <&kscan0>;
             
-            // Populated exactly 50 physical layout mapping points for ZMK Studio tracking
+            // Standard stable literal geometry maps for your explicit 12-14-14-10 layout
             keys
-                = <&key_physical 0 0>   <&key_physical 0 10>  <&key_physical 0 20>  <&key_physical 0 30>  <&key_physical 0 40>  <&key_physical 0 50>  <&key_physical 0 60>  <&key_physical 0 70>  <&key_physical 0 80>  <&key_physical 0 90>  <&key_physical 0 100> <&key_physical 0 110>
-                  <&key_physical 10 0>  <&key_physical 10 10> <&key_physical 10 20> <&key_physical 10 30> <&key_physical 10 40> <&key_physical 10 50> <&key_physical 10 60> <&key_physical 10 70> <&key_physical 10 80> <&key_physical 10 90> <&key_physical 10 100> <&key_physical 10 110> <&key_physical 10 120> <&key_physical 10 130>
-                  <&key_physical 20 0>  <&key_physical 20 10> <&key_physical 20 20> <&key_physical 20 30> <&key_physical 20 40> <&key_physical 20 50> <&key_physical 20 60> <&key_physical 20 70> <&key_physical 20 80> <&key_physical 20 90> <&key_physical 20 100> <&key_physical 20 110> <&key_physical 20 120> <&key_physical 20 130>
-                  <&key_physical 30 20> <&key_physical 30 30> <&key_physical 30 40> <&key_physical 30 50> <&key_physical 30 60> <&key_physical 30 70> <&key_physical 30 80> <&key_physical 30 90> <&key_physical 30 100> <&key_physical 30 110>
-                ;
+                = <
+                  // Row 1 (12 keys)
+                  &key 0 1 &key 0 2 &key 0 3 &key 0 4 &key 0 5 &key 0 6 &key 4 0 &key 4 1 &key 4 2 &key 4 3 &key 4 4 &key 4 5
+                  // Row 2 (14 keys)
+                  &key 1 0 &key 1 1 &key 1 2 &key 1 3 &key 1 4 &key 1 5 &key 1 6 &key 5 0 &key 5 1 &key 5 2 &key 5 3 &key 5 4 &key 5 5 &key 5 6
+                  // Row 3 (14 keys)
+                  &key 2 0 &key 2 1 &key 2 2 &key 2 3 &key 2 4 &key 2 5 &key 2 6 &key 6 0 &key 6 1 &key 6 2 &key 6 3 &key 6 4 &key 6 5 &key 6 6
+                  // Row 4 (10 thumb/encoder keys - Encoders centered precisely)
+                  &key 3 3 &key 3 4 &key 3 5 &key 3 6 &key 3 0           &key 7 4 &key 7 0 &key 7 1 &key 7 2 &key 7 3
+                >;
         };
     };
 
@@ -75,7 +79,7 @@
     // Physical Row 3 (14 keys)
     RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(2,6) RC(6,0) RC(6,1) RC(6,2) RC(6,3) RC(6,4) RC(6,5) RC(6,6)
     
-    // Physical Row 4 (10 thumb/encoder keys)
+    // Physical Row 4 (10 thumb/encoder keys - Encoders centered precisely)
     RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,0)         RC(7,4) RC(7,0) RC(7,1) RC(7,2) RC(7,3)
         >;
     };
