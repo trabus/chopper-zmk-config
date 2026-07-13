@@ -1,4 +1,5 @@
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <dt-bindings/zmk/physical_layouts.h> // Added missing header to resolve the key_physical error
 
 / {
     chosen {
@@ -48,7 +49,14 @@
             display-name = "Chopper Unibody";
             transform = <&default_transform>;
             kscan = <&kscan0>;
-            keys = <&key_physical 0 0>;
+            
+            // Populated exactly 50 physical layout mapping points for ZMK Studio tracking
+            keys
+                = <&key_physical 0 0>   <&key_physical 0 10>  <&key_physical 0 20>  <&key_physical 0 30>  <&key_physical 0 40>  <&key_physical 0 50>  <&key_physical 0 60>  <&key_physical 0 70>  <&key_physical 0 80>  <&key_physical 0 90>  <&key_physical 0 100> <&key_physical 0 110>
+                  <&key_physical 10 0>  <&key_physical 10 10> <&key_physical 10 20> <&key_physical 10 30> <&key_physical 10 40> <&key_physical 10 50> <&key_physical 10 60> <&key_physical 10 70> <&key_physical 10 80> <&key_physical 10 90> <&key_physical 10 100> <&key_physical 10 110> <&key_physical 10 120> <&key_physical 10 130>
+                  <&key_physical 20 0>  <&key_physical 20 10> <&key_physical 20 20> <&key_physical 20 30> <&key_physical 20 40> <&key_physical 20 50> <&key_physical 20 60> <&key_physical 20 70> <&key_physical 20 80> <&key_physical 20 90> <&key_physical 20 100> <&key_physical 20 110> <&key_physical 20 120> <&key_physical 20 130>
+                  <&key_physical 30 20> <&key_physical 30 30> <&key_physical 30 40> <&key_physical 30 50> <&key_physical 30 60> <&key_physical 30 70> <&key_physical 30 80> <&key_physical 30 90> <&key_physical 30 100> <&key_physical 30 110>
+                ;
         };
     };
 
@@ -58,16 +66,16 @@
         rows = <8>;    
 
         map = <
-    // Physical Row 1 (12 keys - Skips outer edges of Duplex mapping)
+    // Physical Row 1 (12 keys)
             RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5) RC(0,6) RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5)
     
-    // Physical Row 2 (14 keys - Complete Home Alpha)
+    // Physical Row 2 (14 keys)
     RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5) RC(1,6) RC(5,0) RC(5,1) RC(5,2) RC(5,3) RC(5,4) RC(5,5) RC(5,6)
     
-    // Physical Row 3 (14 keys - Complete Bottom Alpha)
+    // Physical Row 3 (14 keys)
     RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(2,6) RC(6,0) RC(6,1) RC(6,2) RC(6,3) RC(6,4) RC(6,5) RC(6,6)
     
-    // Physical Row 4 (10 keys - 4 modifiers surrounding the left/right physical encoder click pins)
+    // Physical Row 4 (10 thumb/encoder keys)
     RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,0)         RC(7,4) RC(7,0) RC(7,1) RC(7,2) RC(7,3)
         >;
     };
