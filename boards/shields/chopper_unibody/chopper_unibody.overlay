@@ -3,8 +3,7 @@
 / {
     chosen {
         zmk,kscan = &kscan0;
-        zmk,matrix-transform = &default_transform;
-        zephyr,display = &oled; // Added path pointer to satisfy ZMK display requirements
+        zephyr,display = &oled;
     };
 
     // =========================================================
@@ -15,7 +14,7 @@
         label = "KSCAN";
         diode-direction = "col2row";
 
-        // 7 Spliced central column nodes routed straight to nice!nano side pins
+        // 7 Central column nodes routed straight to nice!nano side pins
         col-gpios
             = <&gpio0 11 GPIO_ACTIVE_HIGH> // C0 (D7)
             , <&gpio1 4  GPIO_ACTIVE_HIGH> // C1 (D8)
@@ -26,7 +25,6 @@
             , <&gpio1 13 GPIO_ACTIVE_HIGH> // C6 (D15)
             ;
 
-        // Corrected layout syntax pointing directly to the Expander instances
         row-gpios
             = <&pca9555 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
             , <&pca9555 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> 
@@ -40,25 +38,37 @@
     };
 
     // =========================================================
-    // 2. MATRIX TRANSFORM MAPPING (Maps Electrical Grid to Physical Layout)
+    // 2. MODERN PHYSICAL LAYOUT DEFINITION (Required for ZMK Studio)
     // =========================================================
+    layouts {
+        compatible = "zmk,physical-layouts";
+
+        default_layout: default_layout {
+            compatible = "zmk,physical-layout";
+            display-name = "Chopper Unibody";
+            transform = <&default_transform>;
+            kscan = <&kscan0>;
+            keys = <&key_physical 0 0>;
+        };
+    };
+
     default_transform: matrix_transform {
         compatible = "zmk,matrix-transform";
         columns = <7>; 
         rows = <8>;    
 
         map = <
-    // Physical Row 1 (14 keys - Top Alpha)
-    RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5) RC(0,6) RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5) RC(4,6)
+    // Physical Row 1 (12 keys - Skips outer edges of Duplex mapping)
+            RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5) RC(0,6) RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5)
     
-    // Physical Row 2 (14 keys - Home Alpha)
+    // Physical Row 2 (14 keys - Complete Home Alpha)
     RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5) RC(1,6) RC(5,0) RC(5,1) RC(5,2) RC(5,3) RC(5,4) RC(5,5) RC(5,6)
     
-    // Physical Row 3 (16 keys - Bottom Alpha + Left/Right Encoder clicks at outer edges)
-    RC(3,6) RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(2,6) RC(6,0) RC(6,1) RC(6,2) RC(6,3) RC(6,4) RC(6,5) RC(6,6) RC(7,0)
+    // Physical Row 3 (14 keys - Complete Bottom Alpha)
+    RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(2,6) RC(6,0) RC(6,1) RC(6,2) RC(6,3) RC(6,4) RC(6,5) RC(6,6)
     
-    // Physical Row 4 (8 keys - Clean Sub-60% Modifier Thumb Cluster)
-                    RC(3,3) RC(3,4) RC(3,5)          RC(7,1) RC(7,2) RC(7,3)
+    // Physical Row 4 (10 keys - 4 modifiers surrounding the left/right physical encoder click pins)
+    RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,0)         RC(7,4) RC(7,0) RC(7,1) RC(7,2) RC(7,3)
         >;
     };
 
