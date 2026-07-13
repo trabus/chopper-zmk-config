@@ -4,7 +4,6 @@
     chosen {
         zmk,kscan = &kscan0;
         zephyr,display = &oled;
-        // Wiped the zmk,matrix-transform line completely to pass ZMK Studio's build assert checks
     };
 
     // =========================================================
@@ -39,7 +38,7 @@
     };
 
     // =========================================================
-    // 2. OFFICIAL PHYSICAL LAYOUT REGISTRATION (Clears the Static Assert Build Error)
+    // 2. STABLE PHYSICAL LAYOUT DEFINITION (ZMK Studio v0.3 Compliant)
     // =========================================================
     layouts {
         compatible = "zmk,physical-layouts";
@@ -49,6 +48,19 @@
             display-name = "Chopper Unibody";
             transform = <&default_transform>;
             kscan = <&kscan0>;
+            
+            // Format: < Width Height X Y > for all 50 physical layout keys
+            keys
+                = <
+                  // Row 1 (12 keys)
+                  100 100 100 0   100 100 200 0   100 100 300 0   100 100 400 0   100 100 500 0   100 100 600 0   100 100 700 0   100 100 800 0   100 100 900 0   100 100 1000 0   100 100 1100 0  100 100 1200 0
+                  // Row 2 (14 keys)
+                  100 100 0 100   100 100 100 100 100 100 200 100 100 100 300 100 100 100 400 100 100 100 500 100 100 100 600 100 100 100 700 100 100 100 800 100 100 100 900 100  100 100 1000 100 100 100 1100 100 100 100 1200 100 100 100 1300 100
+                  // Row 3 (14 keys)
+                  100 100 0 200   100 100 100 200 100 100 200 200 100 100 300 200 100 100 400 200 100 100 500 200 100 100 600 200 100 100 700 200 100 100 800 200 100 100 900 200  100 100 1000 200 100 100 1100 200 100 100 1200 200 100 100 1300 200
+                  // Row 4 (10 keys - Encoders centered in the thumb row array)
+                  100 100 200 300 100 100 300 300 100 100 400 300 100 100 500 300 100 100 600 300                 100 100 800 300 100 100 900 300 100 100 1000 300 100 100 1100 300 100 100 1200 300
+                >;
         };
     };
 
